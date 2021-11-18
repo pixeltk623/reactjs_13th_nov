@@ -6,8 +6,17 @@
 <body>
 	<h1>Hello This is Kumar</h1>
 
-	<button type="button" onclick="DeleteData()">Delete</button>
-	<!-- <script src="assets/main.js"></script> -->
+	<form method="POST">
+		<label>Enter Your Number: </label>
+		<input type="text" name="number" id="number" class="number">
+		<span id="e1"></span>
+		<input type="submit" name="submit" value="submit" onclick="return checkEvenNo()">
+	</form>
+
+	<h1 id="result"></h1>
+<!-- checkEvenNo() -->
+	<!-- <button type="button" onclick="DeleteData()">Delete</button> -->
+	<script src="assets/main.js"></script>
 	<script type="text/javascript">
 
 		'use strict';
@@ -279,26 +288,26 @@
 
 		//console.log( Hello==undefined ? 'Value is Not there' : Hello);
 
-		let listOfElement = [45,564,78]
+		// let listOfElement = [45,564,78]
 
-		console.log(listOfElement);
+		// console.log(listOfElement);
 
-		console.log(typeof(listOfElement));
+		// console.log(typeof(listOfElement));
 
-		let ObjectOfJs = {name: "Sharvan", email: "s@gmail.com", age: 25}
+		// let ObjectOfJs = {name: "Sharvan", email: "s@gmail.com", age: 25}
 
-		console.log(ObjectOfJs);
+		// console.log(ObjectOfJs);
 
-		console.log(typeof(ObjectOfJs));
+		// console.log(typeof(ObjectOfJs));
 
-		let ObjectOfJsNew = [
-			{name: "Sharvan", email: "s@gmail.com", age: 25},
-			{name: "Sharvan", email: "s@gmail.com", age: 25},
-			{name: "Sharvan", email: "s@gmail.com", age: 25},
-			{name: "Sharvan", email: "s@gmail.com", age: 25}
-		]
+		// let ObjectOfJsNew = [
+		// 	{name: "Sharvan", email: "s@gmail.com", age: 25},
+		// 	{name: "Sharvan", email: "s@gmail.com", age: 25},
+		// 	{name: "Sharvan", email: "s@gmail.com", age: 25},
+		// 	{name: "Sharvan", email: "s@gmail.com", age: 25}
+		// ]
 
-		console.log(ObjectOfJsNew);
+		// console.log(ObjectOfJsNew);
 
 	</script>
 </body>
