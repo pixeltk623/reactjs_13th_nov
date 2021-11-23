@@ -13,6 +13,45 @@
 		<input type="submit" name="submit" value="submit" onclick="return checkEvenNo()">
 	</form>
 
+	<h4>the area of a triangle<h4>
+  
+    <label>Enter the value of side 1:</label>
+      
+    <input type="number" id="side1">
+    <br><br>
+  
+    <label for="side2">Enter the value of side 2: </label>
+      
+    <input type="number" id="side2">
+    <br><br>
+  
+    <label for="side3">Enter the value of side 3: </label>
+      
+    <input type="number" id="side3">
+    <br><br>
+  
+    <button onclick="Area()">Click Here!</button>
+  
+    <p>Area of Triangle: <span id="display"></span></p>
+
+    <h4>the area of a Square<h4>
+
+    <label>Enter Your Side Length </label>
+	<input id="side" type="text"/><br>
+	<button onclick="areaofsquare()">calculate</button>
+	<div id="area_status"></div>
+
+
+
+	<h4>the area of a Rectangle<h4>
+
+    <label>Enter Your Length </label>
+	<input id="length" type="text"/><br>
+	<label>Enter Your Width </label>
+	<input id="width" type="text" /><br>
+	<button onclick="areaofrectangle()">calculate</button>
+	<div id="area_rectangle"></div>
+
 	<h1 id="result"></h1>
 <!-- checkEvenNo() -->
 	<!-- <button type="button" onclick="DeleteData()">Delete</button> -->

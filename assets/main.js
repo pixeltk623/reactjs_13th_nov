@@ -198,3 +198,51 @@ function checkEvenNo() {
 // let sn = 2000
 // let ln = 50
 // => Find The greatest and same numbe
+
+
+var p, t, r, SI;
+    
+    // p = principal
+    // t = time
+    // r = rate
+    // SI = simple interest
+    
+    // Calculate simple interest
+    p = 15;
+    t = 12;
+    r = 12;
+    
+    SI = (p * t * r) / 100;
+    
+    // Output
+    document.write("Simple Interest = " + SI);
+
+
+
+    function Area() {
+            var side1 = document.getElementById("side1").value;
+  
+            var side2 = document.getElementById("side2").value;
+  
+            var side3 = document.getElementById("side3").value;
+ 
+            var s = (side1 + side2 + side3) / 2;
+  
+            var area = Math.sqrt(s * ((s - side1) * (s - side2) * (s - side3)));
+  
+            document.getElementById("display").innerHTML = area;
+        }
+
+
+   function areaofsquare(){
+   var side = document.getElementById("side").value;
+   var output = side*side;
+   document.getElementById("area_status").innerHTML="your area is "+output;
+}
+
+   function areaofrectangle(){
+   var length = document.getElementById("length").value;
+    var width = document.getElementById("width").value;
+   var output = length*width;
+   document.getElementById("area_rectangle").innerHTML="your area is "+output;
+}
