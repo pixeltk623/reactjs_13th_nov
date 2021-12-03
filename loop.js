@@ -192,10 +192,6 @@ html += "<ul>";
 		html += "<li "+style+">"+value+"</li>";
 	})
 html += "</ul>";
-
-
-
-
 document.getElementById("result").innerHTML = html;
 
 //document.getElementById("result").style.color = "green";

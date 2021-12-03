@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<form method="POST">
+		<label>Name: </label>
+		<input type="text" name="name" id="name">
+		<span id="e1"></span>
+		<br><br>
+		<label>Email: </label>
+		<input type="email" name="email" id="email">
+		<span id="e2"></span>
+		<br><br>
+
+		<label>City</label>
+		<select name="city" id="city">
+			<option value="">Select</option>
+			<option value="Vadodara">Vadodara</option>
+			<option value="Anand">Anand</option>
+			<option value="Surat">Surat</option>
+			<option value="Bharuch">Bharuch</option>
+		</select>
+		<span id="e3"></span>
+		<br><br>
+		<label>Gender</label>
+		<input type="radio" name="gender" value="Male">Male
+		<input type="radio" name="gender" value="Female">Female
+		<span id="e4"></span>
+		<br><br>
+		<label>Hobby</label>
+		<input type="checkbox" name="hobby" value="Cricket">Cricket
+		<input type="checkbox" name="hobby" value="Football">Football
+		<input type="checkbox" name="hobby" value="Tenis">Tenis
+		<input type="checkbox" name="hobby" value="Chess">Chess
+		<span id="e5"></span>
+		<br><br>
+		<label>Profile Pic</label>
+		<input type="file" name="profilePic" id="profilePic">
+		<br><br>
+		<label>Dob</label>
+		<input type="date" name="dob" id="dob">
+		<br><br>
+		<input type="submit" name="Submit" onclick="return formValidate()">
+	</form>
+
+	<script type="text/javascript">
+		function formValidate() {
+			let userOfName = document.getElementById("name").value;
+			let email = document.getElementById("email").value;
+			let city = document.getElementById("city").value;
+			let gender = document.getElementsByName("gender");
+			let hobby = document.getElementsByName("hobby");
+			let profilePic = document.getElementsByName("profilePic");
+
+			var genderValue = '';
+			var hobbyValue = []
+
+			let e1 = document.getElementById("e1");
+			let e2 = document.getElementById("e2");
+			let e3 = document.getElementById("e3");
+			let e4 = document.getElementById("e4");
+			let e5 = document.getElementById("e5");
+
+			const emailR = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+			//console.log(profilePic[0].files.length);
+
+			//console.log(gender);
+
+			if (userOfName=='') {
+				e1.innerHTML = "Name Can Not Be blank";
+				e1.style.color = "red";
+			} else {
+				e1.innerHTML = "";
+			}
+
+			if (email=='') {
+				e2.innerHTML = "Email Can Not Be blank";
+				e2.style.color = "red";
+			} else {
+				
+
+				if (emailR.test(email)) {
+					e2.innerHTML = "";
+				} else {
+					e2.innerHTML = "Email is Not Valid";
+					e2.style.color = "red";
+				}
+			}
+
+			if (city=='') {
+				e3.innerHTML = "City is Not Selected";
+				e3.style.color = "red";
+			} else {
+				e3.innerHTML = "";
+			}
+
+			for(var i = 0; i<gender.length; i++) {
+				// console.log(i)
+
+				// console.log(gender[i])
+
+				// console.log(gender[i].checked)
+
+				if (gender[i].checked==true) {
+					genderValue += gender[i].value;
+				}
+			}
+
+			if (genderValue=='') {
+				e4.innerHTML = "Gender is Not Selected";
+				e4.style.color = "red";
+			} else {
+				e4.innerHTML = "";
+			}
+
+			console.log(genderValue)
+
+			for(var i = 0; i<hobby.length; i++) {
+				if(hobby[i].checked==true) {
+					//hobbyValue += hobby[i].value;
+
+					hobbyValue.push(hobby[i].value)
+				}
+			}
+
+			console.log(hobbyValue)
+
+			if(hobbyValue.length>=0) {
+
+				if(hobbyValue.length==0) {
+					e5.innerHTML = "Hobby is Not Selected";
+					e5.style.color = "red";
+				} else if(hobbyValue.length==1) {
+					e5.innerHTML = "Only 1 Hobby is Selected";
+					e5.style.color = "red";
+				} else {
+					e5.innerHTML = "";
+				}
+
+			}	
+
+			if (profilePic[0].files.length==0) {
+				console.log("File is Not Selected")
+			} else {
+				console.log(profilePic[0].files[0].name)
+				console.log(profilePic[0].files[0].size)
+				var fileSplit = profilePic[0].files[0].name.split('.');
+				var size = parseInt((profilePic[0].files[0].size)/1032);
+				console.log(size)
+				// console.log(fileSplit.length)
+
+				var ext = fileSplit[fileSplit.length-1].toLowerCase()
+
+				console.log(ext)
+
+				if (ext!='jpg' || ext!='png' || ext != 'jpeg') {
+					console.log("Ext is Not Matching")
+				}
+
+				if (size>=50 && size <=500) {
+					console.log("")
+				} else {
+					console.log("Size is Not Matching")
+				}
+			}
+
+			return false;
+		}
+	</script>
+</body>
+</html>

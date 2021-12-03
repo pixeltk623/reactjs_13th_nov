@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ONKEY UP</title>
+</head>
+<body>
+
+	<form method="post">
+		<label>Name: </label>
+		<input type="text" name="name" id="name" onkeyup="validateOurName()">
+		<span id="e1"></span>
+	</form>
+
+	<script type="text/javascript">
+		function validateOurName() {
+
+			let nameOfUser = document.getElementById('name').value;
+			let e1 = document.getElementById('e1');
+
+			if (nameOfUser=='') {
+				e1.innerHTML = "Name Can Not be Blank";
+				e1.style.color = "red";
+			} else {
+
+				if(nameOfUser.length<5) {
+					e1.innerHTML = "Length Issue";
+					e1.style.color = "red";
+				} else {
+					e1.innerHTML = "";	
+				}
+				
+			}
+
+			console.log(nameOfUser);
+
+		}
+	</script>
+</body>
+</html>
