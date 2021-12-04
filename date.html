@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date</title>
+</head>
+<body>
+<div id="date"></div>
+<div style="float: right; font-weight: bold; font-size: 55px;" id="time"></div>
+
+<script type="text/javascript">
+	
+
+	let listOfMonths = ["January","February","March","April","May","June","July","August","September","October", "November","December"]
+
+	//console.log(listOfMonths);
+
+	let listOfWeekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+	//console.log(listOfWeekDays);
+
+	let date = new Date()
+
+	// console.log(date)
+
+	// console.log(date.getFullYear())
+	// console.log(date.getMonth())
+
+	// console.log(listOfMonths[date.getMonth()]);
+
+	// console.log(date.getDay());
+
+	// console.log(listOfWeekDays[date.getDay()]);
+
+	document.getElementById('date').innerHTML = date.getFullYear() + "/" + (listOfMonths[date.getMonth()]) + "/" + date.getDate()
+
+	console.log(date.getHours());
+	// console.log(date.getMinutes());
+	// console.log(date.getSeconds());
+
+	// let hours = date.getHours().toString()
+
+	// if(hours.length<2){
+	// 	hours = "0"+hours.toString();
+	// }
+
+	// console.log(hours);
+
+
+	let hours = date.getHours()
+	let minutes = date.getMinutes()
+	let seconds = date.getSeconds()
+
+	let amPm = (hours>=12) ? "PM" : "AM"
+
+
+	if(hours>12 && hours <=23) {
+		hours = hours-12; // 14 - 12 -= 2 
+
+		if (hours<10) {
+			hours = "0"+hours
+		}
+	} else {
+		if (hours<10) {
+			hours = "0"+hours
+		}
+	}
+
+	if(minutes<10){
+		minutes = "0"+minutes
+	}
+
+	if(seconds<10){
+		seconds = "0"+seconds
+	}
+
+	//console.log(hours);
+
+	console.log(hours + ":"+minutes+":"+seconds + " " + amPm)
+	// if (hours<10) {
+	// 	hours = "0"+hours
+	// }
+
+	// if (minutes<10) {
+	// 	minutes = "0"+minutes
+	// }
+
+	// if (seconds<10) {
+	// 	seconds = "0"+seconds
+	// }
+
+	// console.log(hours+":"+minutes+":"+seconds);
+
+
+
+	let currentTime = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+
+	console.log(currentTime);
+
+	// document.getElementById('time').innerHTML = currentTime;
+
+
+	function getName() {
+		console.log("Sharvan kumar");
+	}
+
+	function getCurrentTime() {
+		let date = new Date()
+		let hours = date.getHours()
+		let minutes = date.getMinutes()
+		let seconds = date.getSeconds()
+
+		let amPm = (hours>=12) ? "PM" : "AM"
+
+
+		if(hours>12 && hours <=23) {
+			hours = hours-12; // 14 - 12 -= 2 
+
+			if (hours<10) {
+				hours = "0"+hours
+			}
+		} else {
+			if (hours<10) {
+				hours = "0"+hours
+			}
+		}
+
+		if(minutes<10){
+			minutes = "0"+minutes
+		}
+
+		if(seconds<10){
+			seconds = "0"+seconds
+		}
+
+		let realTime = hours + ":"+minutes+":"+seconds + " " + amPm
+
+		document.getElementById('time').innerHTML = realTime;
+	}
+
+	setInterval(
+		getCurrentTime,
+		1000
+	);
+
+	// Y/m/d 
+	// d-m-y 
+	// y-m-d 
+
+
+</script>
+</body>
+</html>
