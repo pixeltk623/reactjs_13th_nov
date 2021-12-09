@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<form method="post" id="myForm">
+		<label>Name: </label>
+		<input type="text" name="name" id="name">
+		<br><br>
+		<label>Email: </label>
+		<input type="text" name="email" id="email">
+		<br><br>
+		<label>Gender</label>
+		<input type="radio" name="gender" value="Male">Male
+		<input type="radio" name="gender" value="Female">Female
+		<br><br>
+
+		<label>Hobby</label>
+		<input type="checkbox" name="hobby" value="Cricket">Cricket
+		<input type="checkbox" name="hobby" value="Football">Football
+
+
+		<br><br>
+
+		<label>City</label>
+		<select name="city" id="city">
+			<option value="">Select</option>
+			<option value="Vadodara">Vadodara</option>
+			<option value="Surat">Surat</option>
+			<option value="Bharuch">Bharuch</option>
+		</select>
+		<br><br>
+
+		<input type="submit" name="submit" onclick="return collectFormData();">
+
+	</form>
+
+	<script type="text/javascript">
+		function collectFormData() {
+			let name = document.getElementById('name').value;
+			let email = document.getElementById('email').value;
+			let gender = document.getElementsByName('gender');
+			let hobby = document.getElementsByName('hobby');
+			let city = document.getElementById("city").value;
+			let genderValue = "";
+			let hobbyValue = [];
+
+			for(let i = 0; i<gender.length; i++) {
+				if(gender[i].checked) {
+					genderValue += gender[i].value
+				}
+			}
+
+			for(let i = 0; i<hobby.length; i++) {
+
+				if(hobby[i].checked) {
+
+					hobbyValue.push(hobby[i].value);
+				}
+
+			}
+			
+
+			const API_URL = "http://localhost/php_11th_aug/crUD_AJAX/api.php";
+
+			var http = new XMLHttpRequest();
+			http.open("POST", API_URL, false)
+			http.setRequestHeader('Content-type', 'application/json');
+			http.send(JSON.stringify({
+				name: name,
+				email: email,
+				gender: genderValue,
+				hobby: hobbyValue,
+				city: city
+			}))
+
+			let finalResult = JSON.parse(http.responseText);
+
+			console.log(finalResult.status);
+
+			if(finalResult.status) {
+				document.getElementById("myForm").reset();
+				alert("Data Inserted")
+			}
+
+			//document.getElementById("myForm").reset();
+
+
+
+			return false;
+		}
+	</script>
+</body>
+</html>
