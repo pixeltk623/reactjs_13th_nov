@@ -41,7 +41,7 @@
         </select>
         <br><br>
 
-        <input type="submit" name="submit" onclick="return collectFormData();">
+        <input type="submit" name="submit" id="a" onclick="return collectFormData();">
 
     </form>
 
@@ -102,7 +102,7 @@
 
         // console.log(html);
 
-        httpApiGetRequest("http://localhost/php_11th_aug/crUD_AJAX/get.php");
+        httpApiGetRequest("http://localhost/rest_api/api.php");
         function httpApiGetRequest(theUrl){
             var httpReq = new XMLHttpRequest()
             httpReq.open("GET", theUrl, false);
@@ -133,7 +133,7 @@
                         html += "<td>"+(result.data[i].gender)+"</td>";
                         html += "<td>"+(result.data[i].hobby)+"</td>";
                         html += "<td>"+(result.data[i].city)+"</td>";
-                        html += "<td><button type='button' class='btn btn-primary'>Edit</button> <button type='button' class='btn btn-danger' value='"+result.data[i].id+"' id='delete' onclick='return deleteData("+result.data[i].id+")'>Delete</button></td>";
+                        html += "<td><button type='button' class='btn btn-primary' value='"+result.data[i].id+"' onclick='return editData("+result.data[i].id+")'>Edit</button> <button type='button' class='btn btn-danger' value='"+result.data[i].id+"' id='delete' onclick='return deleteData("+result.data[i].id+")'>Delete</button></td>";
                     html += "</tr>";
                 }
 
@@ -177,7 +177,7 @@
             }
             
 
-            const API_URL = "http://localhost/php_11th_aug/crUD_AJAX/api.php";
+            const API_URL = "http://localhost/rest_api/insert_data.php";
 
             var http = new XMLHttpRequest();
             http.open("POST", API_URL, false)
@@ -197,10 +197,10 @@
             if(finalResult.status) {
                 document.getElementById("myForm").reset();
                 alert("Data Inserted")
-                httpApiGetRequest("http://localhost/php_11th_aug/crUD_AJAX/get.php");
+                httpApiGetRequest("http://localhost/rest_api/api.php");
             }
 
-            //document.getElementById("myForm").reset();
+            // document.getElementById("myForm").reset();
 
 
 
@@ -227,6 +227,108 @@
             }
 
 
+        }
+
+        function editData(id) {
+            document.getElementById("a").setAttribute( "onClick", "return updateData("+id+");" );
+
+            const API_URL = "http://localhost/rest_api/edit.php";
+            var http = new XMLHttpRequest();
+            http.open("POST", API_URL, false)
+            http.setRequestHeader('Content-type', 'application/json');
+            http.send(JSON.stringify({
+                eid: id
+            }))
+
+            let finalResult = JSON.parse(http.responseText);
+
+            document.getElementById('name').value = finalResult.name;
+            document.getElementById('email').value  =finalResult.email;
+            
+            let gender = document.getElementsByName('gender');
+
+            for (var i = 0; i < gender.length; i++) {
+                
+                if (gender[i].value==finalResult.gender) {
+
+                    gender[i].checked=true
+                } 
+            }
+
+            let hobby = document.getElementsByName('hobby');
+
+            const myArrayHobby = finalResult.hobby.split(",");
+
+            //console.log(myArrayHobby); 
+
+            for(let i=0; i<hobby.length; i++) {
+
+                for(let j = 0; j<myArrayHobby.length; j++) {
+                    if(hobby[i].value==myArrayHobby[j]) {
+                        hobby[i].checked = true;
+                    }
+                }               
+            }
+
+            let city = document.getElementById("city").options;
+
+            for (let i = 0; i < city.length; i++) {
+
+                if(city[i].value==finalResult.city) {
+                    city[i].selected = true;
+                }
+            }
+        }
+
+        function updateData(id) {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let gender = document.getElementsByName('gender');
+            let hobby = document.getElementsByName('hobby');
+            let city = document.getElementById("city").value;
+            let genderValue = "";
+            let hobbyValue = [];
+
+            for(let i = 0; i<gender.length; i++) {
+                if(gender[i].checked) {
+                    genderValue += gender[i].value
+                }
+            }
+
+            for(let i = 0; i<hobby.length; i++) {
+
+                if(hobby[i].checked) {
+
+                    hobbyValue.push(hobby[i].value);
+                }
+
+            }
+
+            const API_URL = "http://localhost/rest_api/update_data.php";
+
+            var http = new XMLHttpRequest();
+            http.open("POST", API_URL, false)
+            http.setRequestHeader('Content-type', 'application/json');
+            http.send(JSON.stringify({
+                uid : id,
+                name: name,
+                email: email,
+                gender: genderValue,
+                hobby: hobbyValue,
+                city: city
+            }))
+
+            let finalResult = JSON.parse(http.responseText);
+
+            console.log(finalResult);
+
+            if(finalResult.status) {
+                document.getElementById("myForm").reset();
+                alert("Data Updated")
+                httpApiGetRequest("http://localhost/rest_api/api.php");
+            }
+
+            return false;
         }
     </script>
 
