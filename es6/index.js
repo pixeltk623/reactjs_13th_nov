@@ -142,7 +142,7 @@
 // console.log(set3.values());
 
 
-const set3 = new Set([1,14,45,2,45]);
+// const set3 = new Set([1,14,45,2,45]);
 
 // set3.delete(14)
 
@@ -194,23 +194,223 @@ const set3 = new Set([1,14,45,2,45]);
 
 // console.log(result);
 
-function intersection(setA, setB) {
+// function intersection(setA, setB) {
 
-	let commanSet = new Set();
+// 	let commanSet = new Set();
 
-	for(let i of setB) {
-		if(setA.has(i)) {
-			commanSet.add(i);
-		}
-	}
+// 	for(let i of setB) {
+// 		if(setA.has(i)) {
+// 			commanSet.add(i);
+// 		}
+// 	}
 
-	return commanSet;
-}
+// 	return commanSet;
+// }
 
-let setA = new Set(['Sharvan','Sanjeeve','Shweta']);
-let setB = new Set(['Kumar', 'Sharvan', 'rahul']);
+// let setA = new Set(['Sharvan','Sanjeeve','Shweta']);
+// let setB = new Set(['Kumar', 'Sharvan', 'rahul']);
 
 
-let result = intersection(setA, setB)
+// let result = intersection(setA, setB)
 
-console.log(result);
+// console.log(result);
+
+// Before ES6
+// const employee = {
+// 	name : "Sharvan",
+// 	age : 24,
+// 	job : "Developer"
+// }
+
+// //console.log(employee)
+
+// let name = employee.name;
+// let age = employee.age;
+// let job = employee.job;
+
+// console.log(name)
+// console.log(age)
+// console.log(job)
+
+// In ES6
+
+// const employee = {
+// 	name : "Sharvan",
+// 	age : 24,
+// 	job : "Developer"
+// }
+
+// let {name,age,job} = employee
+
+// console.log(name)
+// console.log(age)
+// console.log(job)
+
+// let {name1,age,job} = employee
+
+// console.log(name1)
+
+// let {name:name1,age:age,job:job} = employee
+
+// console.log(name1)
+
+// console.log(age)
+
+// console.log(job)
+
+// const newArrayData = ["Sharvan","Sanjeev" ,"Rahul"]
+
+// // console.log(newArrayData)
+
+// const [a,b,c] = newArrayData;
+
+// console.log(a)
+// console.log(b)
+// console.log(c)
+
+// let newArrayData = [55]
+
+// let [a = 89, y = 60] = newArrayData;
+
+// console.log(a) // 55  
+// console.log(y) // 60
+
+
+// const employee = {
+// 	name : "Kumar"
+// }
+
+// const {name, age = 24} = employee
+
+// console.log(name);
+
+// console.log(age);
+
+// let x = 5;
+// let y = 8;
+
+// [x, y] = [y,x];
+
+// console.log(x);
+// console.log(y);
+
+
+// const newArrayData = ["Sharvan","Sanjeev" ,"Rahul"]
+
+// const [x, , y] = newArrayData;
+
+// console.log(x)
+// console.log(y)
+
+// const newArrayData = ["Sharvan","Sanjeev" ,"Rahul", "Mohan", "Priya", "Shweta"];
+
+// const [x,...y] = newArrayData;
+
+// console.log(x)
+
+// console.log(y)
+
+// const employee = {
+// 	name: "Kumar",
+// 	age: 24,
+// 	job: "Developer"
+// };
+
+// let {name, ...remain} = employee
+
+// console.log(name);
+
+// console.log(remain);
+
+
+
+// const newArrayData = ["Sharvan","Sanjeev" ,"Rahul", "Mohan", "Priya", "Shweta"];
+
+// const [...x,y] = newArrayData;
+
+// console.log(x)
+
+
+// const newArrayData = ['Sharvan', ["Sanjeev" ,"Rahul", "Mohan"]];
+
+// const [x,[m,n,o]]= newArrayData;
+
+// console.log(x)
+
+// console.log(m)
+// console.log(n)
+// console.log(o)
+
+// const employee = {
+// 	name: "Kumar",
+// 	age: 24,
+// 	gender: "Male",
+// 	address: {
+// 		pin: 390021,
+// 		city: "Gotri"
+// 	}
+// };
+
+// // console.log(employee);
+
+// const {name, address: {pin, city}} = employee
+
+// console.log(name)
+
+// console.log(pin)
+// console.log(city)
+
+
+
+const x = 10;
+const y = "Hello"
+
+// try {
+
+// 	console.log(x/y);
+
+// 	console.log(z)
+// }
+// catch(error) {
+
+// 	console.log("Error Caught");
+
+// 	console.log("Error Message :"+ error )
+// }
+
+
+// try {
+
+// 	console.log(x/y);
+
+// 	console.log(z)
+// }
+// catch(error) {
+
+// 	console.log("Error Caught");
+
+// 	console.log("Error Message :"+ error )
+// }
+
+// finally {
+// 	console.log("finally");
+// }
+
+// const number = 41
+
+// try {
+
+// 	if(number%2==0) {
+// 		console.log("Even")
+// 	} else {
+// 		throw new Error("This Number is Odd")
+// 	}
+
+// 	console.log("Hello kumar")
+// }
+
+// catch(error) {
+// 	console.log("Error Caught");
+
+// 	console.log("Error Message :"+ error )
+// }
